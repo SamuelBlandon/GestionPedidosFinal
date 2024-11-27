@@ -1,12 +1,75 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using lib_entidades;
+using lib_aplicaciones.Interfaces;
+using lib_repositorios.Interfaces;
+using System.Linq.Expressions;
+using lib_entidades.Modelos;
 
 namespace lib_aplicaciones.Implementaciones
 {
-    internal class PedidosAplicacion
+    public class PedidosAplicacion : IPedidosAplicacion
     {
+        private IPedidosRepositorio? iRepositorio = null;
+
+        public PedidosAplicacion(IPedidosRepositorio iRepositorio)
+        {
+            this.iRepositorio = iRepositorio;
+        }
+
+        public void Configurar(string string_conexion)
+        {
+            this.iRepositorio!.Configurar(string_conexion);
+        }
+
+        public Pedidos Borrar(Pedidos entidad)
+        {
+            if (entidad == null || !entidad.Validar())
+                throw new Exception("lbFaltaInformacion");
+
+            if (entidad.Id == 0)
+                throw new Exception("lbNoSeGuardo");
+
+            entidad = iRepositorio!.Borrar(entidad);
+            return entidad;
+        }
+
+        public Pedidos Guardar(Pedidos entidad)
+        {
+            if (entidad == null || !entidad.Validar())
+                throw new Exception("lbFaltaInformacion");
+
+            if (entidad.Id != 0)
+                throw new Exception("lbYaSeGuardo");
+
+            entidad = iRepositorio!.Guardar(entidad);
+            return entidad;
+        }
+
+        public List<Pedidos> Listar()
+        {
+            return iRepositorio!.Listar();
+        }
+
+        public List<Pedidos> Buscar(Pedidos entidad, string tipo)
+        {
+            Expression<Func<Pedidos, bool>>? condiciones = null;
+            switch (tipo.ToUpper())
+            {
+                case "CODIGO": condiciones = x => x.codigo!.Contains(entidad.codigo!); break;
+                default: condiciones = x => x.Id == entidad.Id; break;
+            }
+            return this.iRepositorio!.Buscar(condiciones);
+        }
+
+        public Pedidos Modificar(Pedidos entidad)
+        {
+            if (entidad == null || !entidad.Validar())
+                throw new Exception("lbFaltaInformacion");
+
+            if (entidad.Id == 0)
+                throw new Exception("lbNoSeGuardo");
+
+            entidad = iRepositorio!.Modificar(entidad);
+            return entidad;
+        }
     }
 }
