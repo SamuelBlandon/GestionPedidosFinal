@@ -10,4 +10,8 @@
     <ProjectReference Include="..\lib_utilidades\lib_utilidades.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Impletaciones\" />
+  </ItemGroup>
+
 </Project>
