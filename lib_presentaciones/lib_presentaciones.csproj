@@ -11,8 +11,4 @@
     <ProjectReference Include="..\lib_entidades\lib_entidades.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Implementaciones\" />
-  </ItemGroup>
-
 </Project>
