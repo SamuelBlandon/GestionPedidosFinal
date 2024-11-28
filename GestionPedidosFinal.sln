@@ -27,7 +27,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "lib_presentaciones", "lib_p
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "asp_presentacion", "asp_presentacion\asp_presentacion.csproj", "{31F6E3BB-F8FB-4ABE-A625-FAA10E1E39CC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mts_pruebas_unitarias", "mts_pruebas_unitarias\mts_pruebas_unitarias.csproj", "{C092F7D3-DD06-4EBD-A56B-2B756ADB5340}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mts_pruebas_unitarias", "mts_pruebas_unitarias\mts_pruebas_unitarias.csproj", "{C092F7D3-DD06-4EBD-A56B-2B756ADB5340}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
